@@ -5,11 +5,18 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class TrainingResponse {
+
+public class UserResponse {
 
 	private String message;
+	private double key;
 
-	public TrainingResponse(String message, Object... args) {
+	public UserResponse(Double key, String message, Object... args) {
+		this(message, args);
+		this.key = key;
+	}
+
+	public UserResponse(String message, Object... args) {
 		for (Object arg : args) {
 			message = message.replaceFirst("\\{\\}", arg.toString());
 		}
